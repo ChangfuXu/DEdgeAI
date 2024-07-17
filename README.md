@@ -1,5 +1,5 @@
 # DEdgeAI Implementation
-This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Scheduling for Edge-enabled Distributed AI-Generated Content", submitted to INFOCOM 2025. DEdgeAI is an edge-enabled distributed AIGC system that can orchestrate multiple ESs for expedited and resource-efficient AIGC processing. In this repo, we implement the proposed LAD-TS method, Baselines, and SD3-medium deployment in our paper.
+This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Scheduling for Edge-enabled Distributed AI-Generated Content", submitted to INFOCOM 2025. DEdgeAI is an edge-enabled distributed AIGC system that can orchestrate multiple ESs for expedited and resource-efficient AIGC processing. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium deployment in our paper.
 
 ### Text-to-image with DEdgeAI
 <div align=center>
@@ -57,8 +57,8 @@ The baselines are implemented in the Baselines directory. All the baselines are 
 ### Install
 To run this code, please install some key packages: torch, NumPy, and matplotlib
 
-## III. SD3-medium  Implementation
-The source code of the Stable Diffusion (SD) 3-medium model is released on the GitHub [sd2-ref](https://github.com/Stability-AI/sd3-ref). However, it requires large memory (e.g., about 40 GB) to run, which is unfavorable for edge devices. Therefore, this repo implements a **refined** SD3-medium service that only needs 15 GB memory.
+## III. Refined SD3-medium  Implementation
+The source code of the Stable Diffusion (SD) 3-medium model is released on the GitHub [sd2-ref](https://github.com/Stability-AI/sd3-ref). However, it requires large memory (e.g., about 40 GB) to run, which is unfavorable for edge devices. Therefore, this repo implements a **refined** SD3-medium service deployment that only needs 16 GB memory to run.
 
 ### Evaluation Results
 The delay results of our DEdgeAI system and existing representative platforms under different numbers of AIGC tasks.
@@ -67,16 +67,16 @@ The delay results of our DEdgeAI system and existing representative platforms un
 </div>
 
 ### Code Implementation
-The implemented code is stored in the SD3-medium directory that mainly includes four files:
-- `sd3_infer.py` - entry point, review this for basic usage of diffusion model and the triple-tenc cat
+The implemented code is stored in the reSD3-medium directory that mainly includes four files:
+- `refine_sd3_infer.py` - entry point, review this for basic usage of diffusion model and the triple-tenc cat
 - `sd3_impls.py` - contains the wrapper around the MMDiT and the VAE
-- `other_impls.py` - contains the CLIP model, the T5 model, and some utilities
+- `refine_other_impls.py` - contains the CLIP model, the T5 model, and some utilities
 - `mmdit.py` - contains the core of the MMDiT itself
 
 ### Test Usage
-User can run the `sd3_infer.py` to generate an image.
+User can run the `refine_sd3_infer.py` to generate an image.
 ```sh
-python3 sd3_infer.py
+python3 refine_sd3_infer.py
 ```
 Images will be output to `output.png` by default
 
