@@ -1,10 +1,28 @@
 # DEdgeAI Implementation
 This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Scheduling for Edge-enabled Distributed AI-Generated Content", submitted to INFOCOM 2025. DEdgeAI is an edge-enabled distributed AIGC system that can orchestrate multiple ESs for expedited and resource-efficient AIGC processing. In this repo, we implement the proposed LAD-TS method, Baselines, and SD3-medium deployment in our paper.
 
+### Text-to-image with DEdgeAI
+<div align=center>
+<img src="results/generation_images.jpg" width="300px">
+</div>
+DEdgeAI is implemented on distributed edge devices (e.g., Jetsons) with a refined SD3-medium model that is relatively lightweight and runs on a GPU with at least 16GB VRAM.
 
 ## I. LAD-TS Method
 We propose LAD-TS, a Latent Action Diffusion-based Task Scheduling (LAD-TS) method to minimize the service delays in the dynamic MEC environment. LAD-TS optimizes task scheduling policy through probability reasoning, thus overcoming the performance instability of previous diffusion-based DRL methods. 
 
+### Learning Performance 
+<div align=center>
+<img src="results/learning_performance.jpg" width="300px">
+</div>
+Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS, SAC-TS, and D2SAC-TS methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
+
+### LADN Structure
+<div align=center>
+<img src="results/ladn_structure.jpg" width="400px">
+</div>
+Compared to existing methods, our LAD-TS method utilizes the historical action probability instead of the Gaussian noise as the model input, ensuring a better offloading decision.
+
+### Code implementation
 The code of the LAD-TS method is stored in the LAD-TS directory that mainly includes the following four files: 
 
 - `diffusion_lad.py`: This file implements the latent action diffusion processing.
@@ -42,8 +60,14 @@ To run this code, please install some key packages: torch, NumPy, and matplotlib
 ## III. SD3-medium  Implementation
 The source code of the Stable Diffusion (SD) 3-medium model is released on the GitHub [sd2-ref](https://github.com/Stability-AI/sd3-ref). However, it requires large memory (e.g., about 40 GB) to run, which is unfavorable for edge devices. Therefore, this repo implements a **refined** SD3-medium service that only needs 15 GB memory.
 
-The implemented code is stored in the SD3-medium directory that mainly includes four files: 
+### Evaluation Results
+The delay results of our DEdgeAI system and existing representative platforms under different numbers of AIGC tasks.
+<div align=center>
+<img src="results/generation_delay.jpg" width="300px">
+</div>
 
+### Code Implementation
+The implemented code is stored in the SD3-medium directory that mainly includes four files:
 - `sd3_infer.py` - entry point, review this for basic usage of diffusion model and the triple-tenc cat
 - `sd3_impls.py` - contains the wrapper around the MMDiT and the VAE
 - `other_impls.py` - contains the CLIP model, the T5 model, and some utilities
