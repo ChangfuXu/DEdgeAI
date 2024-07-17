@@ -3,7 +3,7 @@ This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Sc
 
 ### Text-to-image with DEdgeAI
 <div align=center>
-<img src="results/generation_images.jpg" width="300px">
+<img src="results/generation_images.jpg" width="400px">
 </div>
 DEdgeAI is implemented on distributed edge devices (e.g., Jetsons) with a refined SD3-medium model that is relatively lightweight and runs on a GPU with at least 16GB VRAM.
 
@@ -12,13 +12,13 @@ We propose LAD-TS, a Latent Action Diffusion-based Task Scheduling (LAD-TS) meth
 
 ### Learning Performance 
 <div align=center>
-<img src="results/learning_performance.jpg" width="300px">
+<img src="results/learning_performance.jpg" width="400px">
 </div>
 Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS, SAC-TS, and D2SAC-TS methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
 
 ### LADN Structure
 <div align=center>
-<img src="results/ladn_structure.jpg" width="400px">
+<img src="results/ladn_structure.jpg" width="500px">
 </div>
 Compared to existing methods, our LAD-TS method utilizes the historical action probability instead of the Gaussian noise as the model input, ensuring a better offloading decision.
 
