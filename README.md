@@ -8,19 +8,19 @@ This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Sc
 DEdgeAI is implemented on distributed edge devices (e.g., Jetsons) with a refined SD3-medium model that is relatively lightweight and runs on a GPU with at least 16GB VRAM.
 
 ## I. LAD-TS Method
-We propose LAD-TS, a Latent Action Diffusion-based Task Scheduling (LAD-TS) method to minimize the service delays in the dynamic MEC environment. LAD-TS optimizes task scheduling policy through probability reasoning, thus overcoming the performance instability of previous diffusion-based DRL methods. 
-
-### Learning Performance 
-<div align=center>
-<img src="results/learning_performance.jpg" width="400px">
-</div>
-Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS, SAC-TS, and D2SAC-TS methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
+We propose LAD-TS, a Latent Action Diffusion-based Task Scheduling (LAD-TS) method to minimize the service delays in the dynamic MEC environment. LAD-TS optimizes task scheduling policy through probability reasoning, thus overcoming the performance instability of previous diffusion-based DRL methods.
 
 ### LADN Structure
 <div align=center>
 <img src="results/ladn_structure.jpg" width="500px">
 </div>
 Compared to existing methods, our LAD-TS method utilizes the historical action probability instead of the Gaussian noise as the model input, ensuring a better offloading decision.
+
+### Learning Performance 
+<div align=center>
+<img src="results/learning_performance.jpg" width="400px">
+</div>
+Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS, SAC-TS, and D2SAC-TS methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
 
 ### Code implementation
 The code of the LAD-TS method is stored in the LAD-TS directory that mainly includes the following four files: 
@@ -58,7 +58,7 @@ The baselines are implemented in the Baselines directory. All the baselines are 
 To run this code, please install some key packages: torch, NumPy, and matplotlib
 
 ## III. Refined SD3-medium  Implementation
-The source code of the Stable Diffusion (SD) 3-medium model is released on the GitHub [sd2-ref](https://github.com/Stability-AI/sd3-ref). However, it requires large memory (e.g., about 40 GB) to run, which is unfavorable for edge devices. Therefore, this repo implements a **refined** SD3-medium service deployment that only needs 16 GB memory to run.
+The source code of the Stable Diffusion (SD) 3-medium model is released on the GitHub [sd3-ref](https://github.com/Stability-AI/sd3-ref). However, it requires a large memory (e.g., about 40 GB) to run, which is inappropriate for edge devices. Therefore, our repo implements a **refined** SD3(reSD3) medium service deployment that only needs 16 GB memory to run.
 
 ### Evaluation Results
 The delay results of our DEdgeAI system and existing representative platforms under different numbers of AIGC tasks.
@@ -67,7 +67,7 @@ The delay results of our DEdgeAI system and existing representative platforms un
 </div>
 
 ### Code Implementation
-The implemented code is stored in the reSD3-medium directory that mainly includes four files:
+This code implementation is based on the original SD3 medium mode at the [repo](https://github.com/Stability-AI/sd3-ref). Our refined SD3-medium code is stored in the reSD3-medium directory that mainly includes four files:
 - `refine_sd3_infer.py` - entry point, review this for basic usage of diffusion model and the triple-tenc cat
 - `sd3_impls.py` - contains the wrapper around the MMDiT and the VAE
 - `refine_other_impls.py` - contains the CLIP model, the T5 model, and some utilities
@@ -88,7 +88,7 @@ To run this code, please install key packages: transformers, torch, torchvision,
     - `clip_g.safetensors` (openclip bigG can be downloaded in Hugging Face Platform)
     - `clip_l.safetensors` (OpenAI CLIP-L can be downloaded in Hugging Face Platform)
     - `sd3_medium.safetensors` (MMDiT model file can be downloaded in Hugging Face Platform)
-- folder `dataset` with the file `Flickr8k_text_prompts.txt`. This file is extracted from the public dataset **Flickr8k**. We use the text labels as the input of AIGC tasks in our experiments.
+- folder `dataset` with the file `Flickr8k_text.txt`. This file stores the text prompts those are extracted with the text labels from the public **Flickr8k** dataset.  We use the text in this file as the input of AIGC tasks in our experiments.
    
 ### SD3-medium Code Origin
 
