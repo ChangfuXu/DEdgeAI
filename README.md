@@ -1,5 +1,5 @@
 # DEdgeAI Implementation
-This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Scheduling for Edge-enabled Distributed AI-Generated Content", submitted to INFOCOM 2025. DEdgeAI is an edge-enabled distributed AIGC system that can orchestrate multiple ESs for expedited and resource-efficient AIGC processing. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium deployment in our paper.
+This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Scheduling for Edge-enabled Distributed AI-Generated Content", **submitted to INFOCOM 2025**. DEdgeAI is an edge-enabled distributed AIGC system that can orchestrate multiple edge devices for expedited and resource-efficient AIGC processing. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium deployment in our paper.
 
 ### Text-to-image with DEdgeAI
 <div align=center>
@@ -88,7 +88,7 @@ To run this code, please install key packages: transformers, torch, torchvision,
     - `clip_g.safetensors` (openclip bigG can be downloaded in Hugging Face Platform)
     - `clip_l.safetensors` (OpenAI CLIP-L can be downloaded in Hugging Face Platform)
     - `sd3_medium.safetensors` (MMDiT model file can be downloaded in Hugging Face Platform)
-- folder `dataset` with the file `Flickr8k_text.txt`. This file stores the text prompts those are extracted with the text labels from the public **Flickr8k** dataset.  We use the text in this file as the input of AIGC tasks in our experiments.
+- folder `dataset` with the file `Flickr8k_text.txt`. This file stores the text prompts those are extracted with the text labels from the public **Flickr8k** dataset.  We use the text labels in this file as the input of AIGC tasks in our experiments.
    
 ### SD3-medium Code Origin
 
