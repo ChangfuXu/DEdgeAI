@@ -23,7 +23,7 @@ Compared to existing methods, our LAD-TS method utilizes the historical action p
 Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS [1], SAC-TS [2], and D2SAC-TS [3] methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
 
 ### Code implementation
-The code of the LAD-TS method includes the following four files: 
+The code of the LAD-TS method mainly includes the following four files: 
 
 - `diffusion_lad.py`: This file implements the latent action diffusion processing.
 
