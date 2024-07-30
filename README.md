@@ -1,5 +1,5 @@
 # DEdgeAI Implementation
-This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Scheduling for Edge-enabled Distributed AI-Generated Content", **submitted to INFOCOM 2025**. DEdgeAI is an edge-enabled distributed AIGC system that can orchestrate multiple edge devices for expedited and resource-efficient AIGC processing. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium deployment in our paper.
+This repo is an implementation of our paper "**A Distributed Edge System for Accelerating AIGC Services with Latent Action Diffusion Scheduling**", **submitted to INFOCOM 2025**. We propose DEdgeAI, a distributed edge system with a novel Latent Action Diffusion-based Task Scheduling (LAD-TS) method that can orchestrate multiple edge devices for expedited and resource-efficient AIGC services. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium (reSD3-medium) deployment in our paper.
 
 ### Text-to-image with DEdgeAI
 <div align=center>
@@ -8,22 +8,22 @@ This repo is an implementation of our paper "DEdgeAI: Latent Action Diffusion Sc
 DEdgeAI is implemented on distributed edge devices (e.g., Jetsons) with a refined SD3-medium model that is relatively lightweight and runs on a GPU with at least 16GB VRAM.
 
 ## I. LAD-TS Method
-We propose LAD-TS, a Latent Action Diffusion-based Task Scheduling (LAD-TS) method to minimize the service delays in the dynamic MEC environment. LAD-TS optimizes task scheduling policy through probability reasoning, thus overcoming the performance instability of previous diffusion-based DRL methods.
+We propose a novel LAD-TS method that optimizes task scheduling policy by designing a latent action diffusion strategy, achieving near-optimal decisions quickly.
 
 ### LADN Structure
 <div align=center>
 <img src="results/ladn_structure.jpg" width="500px">
 </div>
-Compared to existing methods, our LAD-TS method utilizes the historical action probability instead of the Gaussian noise as the model input, ensuring a better offloading decision.
+Compared to existing methods, our LAD-TS method utilizes the historical action probability instead of the Gaussian noise as the model input during the diffusion processing, ensuring a better offloading decision.
 
 ### Learning Performance 
 <div align=center>
 <img src="results/learning_performance.jpg" width="400px">
 </div>
-Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS, SAC-TS, and D2SAC-TS methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
+Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS [1], SAC-TS [2], and D2SAC-TS [3] methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
 
 ### Code implementation
-The code of the LAD-TS method is stored in the LAD-TS directory that mainly includes the following four files: 
+The code of the LAD-TS method includes the following four files: 
 
 - `diffusion_lad.py`: This file implements the latent action diffusion processing.
 
@@ -46,11 +46,11 @@ To run this code, please install some key packages: torch, NumPy, and matplotlib
 In our paper, we use four baselines: DQN-TS, SAC-TS, D2SAC-TS, and Opt-TS.
 The baselines are implemented in the Baselines directory. All the baselines are implemented with the same setup in our experiments.
 
-(1) DQN-TS [1] baseline: DQN-TS is a DQN-based task scheduling method that has been widely applied to MEC technology. User can run the `main_dqn.py` to achieve experimental results. 
+(1) DQN-TS baseline: The DQN [1] is a well-known DRL method that has been widely applied to various fields. In our experiments, we faithfully implement the DQN-based Task Scheduling (DQN-TS) method as a baseline with the same setup. User can run the `main_dqn.py` to achieve experimental results. 
 
-(2) SAC-TS [2] baseline: SAC-TS is a SAC-based task scheduling method that is the state-of-the-art method based on DRL. User can run the `main_sac.py` to achieve experimental results.
+(2) SAC-TS baseline: The SAC [2] is the state-of-the-art DRL-based method. We also implement the SAC-based Task Scheduling (SAC-TS) method as another baseline with the same setup. User can run the `main_sac.py` to achieve experimental results.
 
-(3) D2SAC-TS [3] baseline: D2SAC-TS is the state-of-the-art scheduling method based on diffusion model and DRL. This code implementation can refer the [release code](https://github.com/Lizonghang/AGOD).
+(3) D2SAC-TS [3] baseline: D2SAC-TS is the state-of-the-art scheduling method based on the diffusion model and DRL. This code implementation can refer the [release code](https://github.com/Lizonghang/AGOD).
 
 (4) Opt-TS baseline: Opt-TS is an optimal method that selects the most suitable ES to process each task by enumerating all action spaces. Opt-TS provides the upper bound on the performance of AIGC services, but it is infeasible since the scheduler has no way of knowing in advance the compute and network resources available for ESs in the actual MEC system. User can run the `main_opt.py` to achieve experimental results.
 
@@ -58,7 +58,7 @@ The baselines are implemented in the Baselines directory. All the baselines are 
 To run this code, please install some key packages: torch, NumPy, and matplotlib
 
 ## III. Refined SD3-medium  Implementation
-The source code of the Stable Diffusion (SD) 3-medium model is released on the GitHub [sd3-ref](https://github.com/Stability-AI/sd3-ref). However, it requires a large memory (e.g., about 40 GB) to run, which is inappropriate for edge devices. Therefore, our repo implements a **refined** SD3(reSD3) medium service deployment that only needs 16 GB memory to run.
+The source code of the Stable Diffusion (SD)3-medium model is released on the GitHub [sd3-ref](https://github.com/Stability-AI/sd3-ref). However, it requires a large memory (e.g., about 40 GB) to run, which is inappropriate for edge devices. Therefore, our repo implements a **refined** SD3(reSD3) medium service deployment that only needs 16 GB memory to run.
 
 ### Evaluation Results
 The delay results of our DEdgeAI system and existing representative platforms under different numbers of AIGC tasks.
@@ -134,6 +134,4 @@ Some code in `other_impls` originates from HuggingFace and is subject to [the Hu
 
 [3] H. Du, Z. Li, D. Niyato, J. Kang, Z. Xiong, H. Huang, and S. Mao, “Diffusion-based reinforcement learning for edge-enabled ai-generated content services,” IEEE Transactions on Mobile Computing, 2024. [Code](https://github.com/Lizonghang/AGOD)
 
-[4] C. Xu, J., Guo, Y. Li, H. Zou, W. Jia, and T. Wang, “Dynamic Parallel Multi-Server Selection and Allocation in Collaborative Edge Computing”, IEEE Transactions on Mobile Computing, 2024. [Paper](https://ieeexplore.ieee.org/abstract/document/10470372)
-
-[5] C. Xu, J. Guo, J. Zeng, S. Meng, X. Chu, J. Cao, and T. Wang, “Enhancing AI-Generated Content Efficiency through Adaptive Multi-Edge Collaboration”, The 44th IEEE International Conference on Distributed Computing Systems (ICDCS 2024), Jersey City, New Jersey, USA. 23 July - 26 July, 2024. [Code](https://github.com/ChangfuXu/AMCoEdge)
+[4] C. Xu, J. Guo, J. Zeng, S. Meng, X. Chu, J. Cao, and T. Wang, “Enhancing AI-Generated Content Efficiency through Adaptive Multi-Edge Collaboration”, The 44th IEEE International Conference on Distributed Computing Systems (ICDCS 2024), Jersey City, New Jersey, USA. 23 July - 26 July, 2024. [Code](https://github.com/ChangfuXu/AMCoEdge)
