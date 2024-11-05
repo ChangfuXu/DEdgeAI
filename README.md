@@ -50,7 +50,7 @@ The baselines are implemented in the Baselines directory. All the baselines are 
 
 (2) SAC-TS baseline: The SAC [2] is the state-of-the-art DRL-based method. We also implement the SAC-based Task Scheduling (SAC-TS) method as another baseline with the same setup. User can run the `main_sac.py` to achieve experimental results.
 
-(3) D2SAC-TS [3] baseline: D2SAC-TS is the state-of-the-art scheduling method based on the diffusion model and DRL. This code implementation can refer the [release code](https://github.com/Lizonghang/AGOD).
+(3) D2SAC-TS [3] baseline: D2SAC-TS is the state-of-the-art scheduling method based on the diffusion model and DRL. This baseline code is implemented according to the [3] and its [release code](https://github.com/Lizonghang/AGOD).
 
 (4) Opt-TS baseline: Opt-TS is an optimal method that selects the most suitable ES to process each task by enumerating all action spaces. Opt-TS provides the upper bound on the performance of AIGC services, but it is infeasible since the scheduler has no way of knowing in advance the compute and network resources available for ESs in the actual MEC system. User can run the `main_opt.py` to achieve experimental results.
 
