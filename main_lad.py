@@ -62,7 +62,6 @@ def LAD_TS_algorithm():
                 for n in range(task_set_len):
                     state = np.hstack([env.tasks_bit[t][b][n],
                                        env.comp_density[n] * env.task_quality[n],
-                                       env.wait_delay,
                                        env.proc_queue_len[t]])  # Observe the system state
                     latent_action_probs = env.latent_action_prob_space[t][b][n]  # Observe the latent action probability
                     action, action_probs = agent_list[b].take_action(state, latent_action_probs)  # Generate the offloading decision using Actor

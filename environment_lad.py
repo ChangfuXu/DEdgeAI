@@ -11,7 +11,7 @@ class OffloadEnvironment:
         self.n_tasks = num_tasks  # The number of mobile devices
         self.n_BSs = num_BSs  # The number of base station or edge server
         self.time_slots = time_slots_  # The number of time slot set
-        self.state_dim = 3 + self.n_BSs  # The dimension of system state
+        self.state_dim = 2 + self.n_BSs  # The dimension of system state
         self.action_dim = num_BSs
         self.duration = 1  # The length of each time slot t. Unit: seconds
         self.ES_capacities = es_capacities  # GHz or Gigacycles/s
@@ -64,26 +64,19 @@ class OffloadEnvironment:
                                 self.comp_density[n] * self.task_quality[n] / self.ES_capacities[action] +
                                 self.results_bit[n] / self.tran_rate_BSs[action])
 
-        delay = tran_comp_delays + self.wait_delay  # calculate the service delay of taks n
+        delay = tran_comp_delays + self.wait_delay  # calculate the service delay of task n
         reward = - delay  # Set the reward
         # Update the processing queue workload lengths at the selected ESs before processing next task
         self.proc_queue_bef[t][action] = self.proc_queue_bef[t][action] + self.comp_density[n] * self.task_quality[n]
 
         if n == len(self.tasks_bit[t][b]) - 1:
-            proc_queue_len_t_end = np.max(
-                [self.proc_queue_len[t][b] + self.proc_queue_bef[t][b] - self.ES_capacities[b] * self.duration, 0])
-            next_wait_delay = proc_queue_len_t_end / self.ES_capacities[action]
             next_state = np.hstack([self.tasks_bit[t + 1][b][0],
                                     self.comp_density[0] * self.task_quality[0],
-                                    next_wait_delay,
                                     self.proc_queue_len[t + 1]])
             next_latent_actions = self.latent_action_prob_space[t + 1][b][0]
         else:
-            next_wait_delay = (self.proc_queue_len[t][action] + self.proc_queue_bef[t][action]) / self.ES_capacities[
-                action]
             next_state = np.hstack([self.tasks_bit[t][b][n + 1],
                                     self.comp_density[n + 1] * self.task_quality[n + 1],
-                                    next_wait_delay,
                                     self.proc_queue_len[t]])
             next_latent_actions = self.latent_action_prob_space[t][b][n + 1]
 

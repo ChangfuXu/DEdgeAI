@@ -12,7 +12,7 @@ We propose a novel LAD-TS method that optimizes task scheduling policy by design
 
 ### LADN Structure
 <div align=center>
-<img src="results/ladn_structure.jpg" width="500px">
+<img src="results/ladn_structure.jpg" width="800px">
 </div>
 Compared to existing methods, our LAD-TS method utilizes the historical action probability instead of the Gaussian noise as the model input during the diffusion processing, ensuring a better offloading decision.
 
@@ -20,7 +20,7 @@ Compared to existing methods, our LAD-TS method utilizes the historical action p
 <div align=center>
 <img src="results/learning_performance.jpg" width="400px">
 </div>
-Our LAD-TS method achieves the lowest delay, outperforming the DQN-TS [1], SAC-TS [2], and D2SAC-TS [3] methods by 13.66%, 9.19%, and 6.32%, respectively, and closely approximates the heuristic optimal method's (Opt-TS) delay.
+Our LAD-TS method reduces the number of training episodes by 80% for DQN-TS [1], 70% for SAC-TS [2], and 60% for D2SAC-TS [3] while achieving outperforming them in service delay by 8.58% to 30.67%, and closely approximates the heuristic optimal method's (Opt-TS) delay.
 
 ### Code implementation
 The code of the LAD-TS method mainly includes the following four files: 
@@ -50,7 +50,7 @@ The baselines are implemented in the Baselines directory. All the baselines are 
 
 (2) SAC-TS baseline: The SAC [2] is the state-of-the-art DRL-based method. We also implement the SAC-based Task Scheduling (SAC-TS) method as another baseline with the same setup. User can run the `main_sac.py` to achieve experimental results.
 
-(3) D2SAC-TS [3] baseline: D2SAC-TS is the state-of-the-art scheduling method based on the diffusion model and DRL. This code implementation can refer the paper [3] and its [release code](https://github.com/Lizonghang/AGOD).
+(3) D2SAC-TS [3] baseline: D2SAC-TS is the state-of-the-art scheduling method based on the diffusion model and DRL. This code implementation can refer the [release code](https://github.com/Lizonghang/AGOD).
 
 (4) Opt-TS baseline: Opt-TS is an optimal method that selects the most suitable ES to process each task by enumerating all action spaces. Opt-TS provides the upper bound on the performance of AIGC services, but it is infeasible since the scheduler has no way of knowing in advance the compute and network resources available for ESs in the actual MEC system. User can run the `main_opt.py` to achieve experimental results.
 
@@ -63,7 +63,7 @@ The source code of the Stable Diffusion (SD)3-medium model is released on the Gi
 ### Evaluation Results
 The delay results of our DEdgeAI system and existing representative platforms under different numbers of AIGC tasks.
 <div align=center>
-<img src="results/generation_delay.jpg" width="300px">
+<img src="results/generation_delay.jpg" width="400px">
 </div>
 
 ### Code Implementation
