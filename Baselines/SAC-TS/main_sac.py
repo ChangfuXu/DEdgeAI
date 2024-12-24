@@ -63,7 +63,6 @@ def SAC_TS_algorithm():
                 for n in range(task_set_len):
                     state = np.hstack([env.tasks_bit[t][b][n],
                                        env.comp_density[n] * env.task_quality[n],
-                                       env.wait_delay,
                                        env.proc_queue_len[t]])  # Observe the system state
                     action = agent_list[b].take_action(state)  # Generate the offloading decision using Actor
                     next_state, reward, delay = env.step(t, b, n, action)  # # Perform the processing of task n
