@@ -1,5 +1,7 @@
 # DEdgeAI Implementation
-This repo is an implementation of our paper "**A Distributed Edge System for Accelerating AIGC Services with Latent Action Diffusion Scheduling**", **submitted to INFOCOM 2025**. We propose DEdgeAI, a distributed edge system with a novel Latent Action Diffusion-based Task Scheduling (LAD-TS) method that can orchestrate multiple edge devices for expedited and resource-efficient AIGC services. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium (reSD3-medium) deployment in our paper.
+This repo is an implementation of our paper "**Accelerating AIGC Services with Latent Action Diffusion Scheduling in Edge Networks **", **submitted to IEEE/ACM Transactions on Networking (Under review)**. This paper was submitted to INFOCOM 2025 and has been rejected with review scores of 3, 3, 2, 2, 1.
+
+We propose DEdgeAI, a distributed edge system with a novel Latent Action Diffusion-based Task Scheduling (LAD-TS) method that can orchestrate multiple edge devices for expedited and resource-efficient AIGC services. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium (reSD3-medium) deployment in our paper.
 
 ### Text-to-image with DEdgeAI
 <div align=center>
