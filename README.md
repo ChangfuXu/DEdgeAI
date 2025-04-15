@@ -137,6 +137,7 @@ Some code in `other_impls` originates from HuggingFace and is subject to [the Hu
 [3] H. Du, Z. Li, D. Niyato, J. Kang, Z. Xiong, H. Huang, and S. Mao, “Diffusion-based reinforcement learning for edge-enabled ai-generated content services,” IEEE Transactions on Mobile Computing, 2024. [Code](https://github.com/Lizonghang/AGOD)
 
 [4] C. Xu, J. Guo, J. Zeng, S. Meng, X. Chu, J. Cao, and T. Wang, “Enhancing AI-Generated Content Efficiency through Adaptive Multi-Edge Collaboration”, The 44th IEEE International Conference on Distributed Computing Systems (ICDCS 2024), Jersey City, New Jersey, USA. 23 July - 26 July, 2024. [Code](https://github.com/ChangfuXu/AMCoEdge)
+
 #### Citation
 If our code can be used in your paper, please help cite:
 
@@ -146,6 +147,7 @@ If our code can be used in your paper, please help cite:
   journal={arXiv preprint arXiv:2412.18212},
   year={2024}
 }
+
 @inproceedings{xu2024phd,
   title={PhD Forum Abstract: Diffusion-based Task Scheduling for Efficient AI-Generated Content in Edge Networks},
   author={Xu, Changfu},
