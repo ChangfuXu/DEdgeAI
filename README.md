@@ -137,3 +137,20 @@ Some code in `other_impls` originates from HuggingFace and is subject to [the Hu
 [3] H. Du, Z. Li, D. Niyato, J. Kang, Z. Xiong, H. Huang, and S. Mao, “Diffusion-based reinforcement learning for edge-enabled ai-generated content services,” IEEE Transactions on Mobile Computing, 2024. [Code](https://github.com/Lizonghang/AGOD)
 
 [4] C. Xu, J. Guo, J. Zeng, S. Meng, X. Chu, J. Cao, and T. Wang, “Enhancing AI-Generated Content Efficiency through Adaptive Multi-Edge Collaboration”, The 44th IEEE International Conference on Distributed Computing Systems (ICDCS 2024), Jersey City, New Jersey, USA. 23 July - 26 July, 2024. [Code](https://github.com/ChangfuXu/AMCoEdge)
+#### Citation
+If our code can be used in your paper, please help cite:
+
+@article{xu2024accelerating,
+  title={Accelerating AIGC Services with Latent Action Diffusion Scheduling in Edge Networks},
+  author={Xu, Changfu and Guo, Jianxiong and Lin, Wanyu and Zou, Haodong and Fan, Wentao and Wang, Tian and Chu, Xiaowen and Cao, Jiannong},
+  journal={arXiv preprint arXiv:2412.18212},
+  year={2024}
+}
+@inproceedings{xu2024phd,
+  title={PhD Forum Abstract: Diffusion-based Task Scheduling for Efficient AI-Generated Content in Edge Networks},
+  author={Xu, Changfu},
+  booktitle={2024 23rd ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)},
+  pages={333--334},
+  year={2024},
+  organization={IEEE}
+}
