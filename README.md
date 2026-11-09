@@ -1,5 +1,5 @@
 # DEdgeAI Implementation
-This repo is an implementation of our paper "**Accelerating AIGC Services with Latent Action Diffusion Scheduling in Edge Networks **", **submitted to IEEE/ACM Transactions on Networking (Under review)**. This paper was submitted to INFOCOM 2025 and has been rejected with review scores of 3, 3, 2, 2, 1.
+This repo is an implementation of our paper "**Accelerating AIGC Services with Latent Action Diffusion Scheduling in Edge Networks**", **Published on IEEE Transactions on Networking, 2026**. 
 
 We propose DEdgeAI, a distributed edge system with a novel Latent Action Diffusion-based Task Scheduling (LAD-TS) method that can orchestrate multiple edge devices for expedited and resource-efficient AIGC services. In this repo, we implement the proposed LAD-TS method, Baselines, and Refined SD3-medium (reSD3-medium) deployment in our paper.
 
@@ -141,11 +141,12 @@ Some code in `other_impls` originates from HuggingFace and is subject to [the Hu
 #### Citation
 If our code can be used in your paper, please help cite:
 
-@article{xu2024accelerating,
+@article{xu2026accelerating,
   title={Accelerating AIGC Services with Latent Action Diffusion Scheduling in Edge Networks},
-  author={Xu, Changfu and Guo, Jianxiong and Lin, Wanyu and Zou, Haodong and Fan, Wentao and Wang, Tian and Chu, Xiaowen and Cao, Jiannong},
-  journal={arXiv preprint arXiv:2412.18212},
-  year={2024}
+  author={Xu, Changfu and Guo, Jianxiong and Lin, Wanyu and Zou, Haodong and Liang, Yuzhu and Chu, Xiaowen and Cao, Jiannong and Wang, Tian },
+  journal={IEEE Transactions on Networking},
+  pages={1--16},
+  year={2026. (DOI: 10.1109/TON.2026.3752742)}
 }
 
 @inproceedings{xu2024phd,
